@@ -57,10 +57,10 @@ function authButton(user) {
   if (AuthService.loading) { return '' }
   return user && user.isAuthenticated
     ? /* html */ `
-    <button class="btn btn-small btn-dark text-muted selectable" onclick="app.AuthController.logout()" title="logout"><i class="mdi mdi-logout f-16 text-white"></i></button>
+    <button class="btn btn-small btn-black text-muted selectable" onclick="app.AuthController.logout()" title="logout"><i class="mdi mdi-logout f-16 text-white"></i></button></div>
   `
     : /* html */ `
-    <button class="btn btn-dark selectable" onclick="app.AuthController.login()">login</button>
+    <button class="btn text-white selectable" onclick="app.AuthController.login()">login</button>
   `
 }
 
@@ -68,13 +68,12 @@ function avatarTemplate(account) {
   return account
     ? /* html */ `
     <div class="card bg-black">weather</div>
-    <div class="text-center"><time>HH:MMmm</time></div>
-    <div class="mr-2">
+    <div class="text-center align-content-center"><time>HH:MMmm</time></div>
+    <div class="mr-2 d-flex">
       <a href="/#/account" class="text-white nav-link selectable rounded" title="Manage Account">
         <img class="rounded-circle" src="${account.picture}" alt="${account.name}" height="45"/>
         <span class="mx-1">${account.name}</span>
-      </a>
-    </div>`
+      </a>`
     : AuthService.loading
       ? /* html */ `
       <div class="skeleton-loader dark avatar"></div>

@@ -1,13 +1,18 @@
 import { AuthController } from './controllers/AuthController.js';
-import { ToDoController } from './controllers/ToDoController.js';
+import { ImagesController } from './controllers/ImagesController.js';
+import { QuotesController } from './controllers/QuotesController.js';
+import { ToDosController } from './controllers/ToDosController.js';
+import { WeatherController } from './controllers/WeatherController.js';
 import { router } from './router-config.js';
-ToDoController
 const USE_ROUTER = false
 
 class App {
 
   AuthController = new AuthController()
-  ToDoController = new ToDoController()
+  ToDosController = new ToDosController()
+  ImagesController = new ImagesController()
+  WeatherController = new WeatherController()
+  QuotesController = new QuotesController()
 
   constructor() {
     if (USE_ROUTER) {
