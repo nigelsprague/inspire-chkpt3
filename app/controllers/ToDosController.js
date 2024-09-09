@@ -1,5 +1,4 @@
 import { AppState } from "../AppState.js"
-import { ToDo } from "../models/ToDo.js"
 import { toDosService } from "../services/ToDosService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
@@ -22,11 +21,14 @@ export class ToDosController {
   }
 
   drawToDos() {
-    const todos = AppState.todos
+    const toDo = AppState.todos
+    console.log('📝', toDo)
     let toDoHTML = ''
-    todos.forEach(todo => toDoHTML += todo.toDoTemplate)
-    console.log(toDoHTML)
+    toDo.forEach(todo => toDoHTML += todo.toDoTemplate)
     setHTML('toDoList', toDoHTML)
+
+    const completedToDos = toDo.filter(todo => todo.completed)
+    setText('todo-count', `${toDo.length - completedToDos.length}`)
   }
 
   async newToDo() {
@@ -42,5 +44,23 @@ export class ToDosController {
     }
   }
 
+  async checkComplete(todoId) {
+    try {
+      await toDosService.checkComplete(todoId)
+    } catch (error) {
+      Pop.error(error)
+      console.error(error)
+    }
+  }
 
+  async deleteToDo(todoId) {
+    try {
+      const wantsToDelete = await Pop.confirm('Are you sure you want to delete this ToDo?')
+      if (!wantsToDelete) return
+      await toDosService.deleteToDo(todoId)
+    } catch (error) {
+      Pop.error(error)
+      console.error(error)
+    }
+  }
 }

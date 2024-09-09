@@ -8,7 +8,6 @@ export class ClockController {
   }
   clockDisplay() {
     let clock = new Date().toLocaleTimeString()
-    console.log(clock)
     setText('clock', clock)
   }
 

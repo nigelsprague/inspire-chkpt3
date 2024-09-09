@@ -6,6 +6,7 @@ export class ToDo {
   }
 
   get toDoTemplate() {
-    return `<span><input onchange="app.ToDosController.checkComplete('${this.id}')" type="checkbox" ${this.completed ? 'checked' : ''}> ${this.description}</span>`
+    return `
+    <span><input onchange="app.ToDosController.checkComplete('${this.id}')" type="checkbox" ${this.completed ? 'checked' : ''}> ${this.description}<span onclick="app.ToDosController.deleteToDo('${this.id}')" role="button" class="text-danger">X</span></span>`
   }
 }
