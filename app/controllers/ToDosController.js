@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { ToDo } from "../models/ToDo.js"
 import { toDosService } from "../services/ToDosService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
@@ -7,7 +8,8 @@ import { setHTML } from "../utils/Writer.js"
 export class ToDosController {
   constructor() {
     console.log('ToDo Controller loaded')
-    AppState.on('todos', this.getToDos)
+    AppState.on('user', this.getToDos)
+    AppState.on('todos', this.drawToDos)
   }
 
   async getToDos() {
@@ -21,8 +23,10 @@ export class ToDosController {
 
   drawToDos() {
     const todos = AppState.todos
-    let todoHTML = ''
-    todos.forEach(() => todoHTML += `<span><input onchange="app.ToDosController.checkComplete('${this.id}')" type="checkbox" ${this.completed ? 'checked' : ''}> ${this.desc}</span>`)
+    let toDoHTML = ''
+    todos.forEach(todo => toDoHTML += todo.toDoTemplate)
+    console.log(toDoHTML)
+    setHTML('toDoList', toDoHTML)
   }
 
   async newToDo() {
@@ -37,4 +41,6 @@ export class ToDosController {
       console.error(error)
     }
   }
+
+
 }

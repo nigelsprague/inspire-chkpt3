@@ -1,5 +1,7 @@
+import { ToDo } from './models/ToDo.js'
 import { EventEmitter } from './utils/EventEmitter.js'
 import { createObservableProxy } from './utils/ObservableProxy.js'
+ToDo
 
 class ObservableAppState extends EventEmitter {
 
@@ -13,6 +15,7 @@ class ObservableAppState extends EventEmitter {
 
   image = null
 
+  /**@type {ToDo[]} */
   todos = []
 }
 

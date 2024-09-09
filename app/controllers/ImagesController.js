@@ -1,6 +1,7 @@
 import { AppState } from "../AppState.js"
 import { imagesService } from "../services/ImagesService.js"
 import { Pop } from "../utils/Pop.js"
+import { setText } from "../utils/Writer.js"
 
 export class ImagesController {
   constructor() {
@@ -21,5 +22,6 @@ export class ImagesController {
   drawImage() {
     const image = AppState.image
     document.body.style.backgroundImage = `url(${image.imgUrl})`
+    setText('author', image.author)
   }
 }
