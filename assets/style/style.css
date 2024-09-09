@@ -14,7 +14,7 @@ body {
   background-size: cover;
   background-position: center;
   color: whitesmoke;
-  text-shadow: 0 1px 2px black;
+  text-shadow: 0 1px 4px black;
 }
 
 #quote {
