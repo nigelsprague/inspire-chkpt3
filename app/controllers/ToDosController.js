@@ -3,7 +3,7 @@ import { ToDo } from "../models/ToDo.js"
 import { toDosService } from "../services/ToDosService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
-import { setHTML } from "../utils/Writer.js"
+import { setHTML, setText } from "../utils/Writer.js"
 
 export class ToDosController {
   constructor() {

@@ -24,7 +24,7 @@
       </div>
       <div class="col-2 fs-5">
         <span role="button" title="See Todo list" data-bs-toggle="collapse" data-bs-target="#toDo" aria-expanded="false"
-          aria-controls="toDo"><span>#</span> ToDos Remaining</span>
+          aria-controls="toDo"><span id="todo-count">#</span> ToDos Remaining</span>
         <div class="collapse" id="toDo">
           <div class="card card-body bg-black" style="width: 100%;">
             <form onsubmit="app.ToDosController.newToDo()">
@@ -51,8 +51,13 @@
     </div>
   </main>
 
-  <footer class="bg-black p-2 mb-3 rounded-pill align-content-center">
-    <div class="flex-grow-1 d-flex justify-content-between align-text-center text-center" id="authstate"></div>
+  <footer class="d-flex p-2 px-5 mb-3 rounded-pill align-items-center justify-content-evenly">
+    <div id="weather" class="col card bg-black text-center p-1">
+      <span id="temp">##deg</span>
+      <span id="weather-desc">sunni</span>
+    </div>
+    <div class="col-6 text-center align-content-center"><time class="fs-3" id="clock">HH:MMmm</time></div>
+    <div class="col d-flex align-text-center text-center" id="authstate"></div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

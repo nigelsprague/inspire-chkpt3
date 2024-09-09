@@ -67,8 +67,6 @@ function authButton(user) {
 function avatarTemplate(account) {
   return account
     ? /* html */ `
-    <div class="card bg-black">weather</div>
-    <div class="text-center align-content-center"><time>HH:MMmm</time></div>
     <div class="mr-2 d-flex">
       <a href="/#/account" class="text-white nav-link selectable rounded" title="Manage Account">
         <img class="rounded-circle" src="${account.picture}" alt="${account.name}" height="45"/>

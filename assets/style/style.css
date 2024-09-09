@@ -30,3 +30,7 @@ body {
 #quote:hover .author-text {
   opacity: unset;
 }
+
+footer {
+  background-color: #000000cf;
+}

@@ -16,9 +16,4 @@ export class WeatherController {
       console.error(error)
     }
   }
-
-  appTime() {
-    const response = new Date()
-    console.log(response.toTimeString)
-  }
 }
