@@ -5,7 +5,6 @@ import { api } from "./AxiosService.js"
 class ToDosService {
   async getToDos() {
     const response = await api.get('api/todos')
-    console.log(response.data)
     //TODO finish this out, we retrieved the data, but what do we do with it?
     const todos = response.data.map(todoData => new ToDo(todoData))
     AppState.todos = todos
@@ -13,7 +12,6 @@ class ToDosService {
 
   async newToDo(toDoFormData) {
     const response = await api.post('api/todos', toDoFormData)
-    console.log(response.data)
 
     const newDo = new ToDo(response.data)
     AppState.todos.push(newDo)
@@ -31,7 +29,6 @@ class ToDosService {
 
   async deleteToDo(todoId) {
     const response = await api.delete(`api/todos/${todoId}`)
-    console.log(response.data)
     const todoIndex = AppState.todos.findIndex(todo => todo.id == todoId)
     AppState.todos.splice(todoIndex, 1)
   }

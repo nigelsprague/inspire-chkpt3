@@ -1,11 +1,13 @@
 import { AppState } from "../AppState.js"
 import { weatherService } from "../services/WeatherService.js"
 import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
+
 
 export class WeatherController {
   constructor() {
     AppState.on('user', this.getWeather)
-    AppState.on('weather', this.drawWeather)
+    AppState.on('weather', this.weatherDisplayF)
     console.log('Weather Controller loaded')
   }
 
@@ -18,8 +20,13 @@ export class WeatherController {
     }
   }
 
-  drawWeather() {
+  weatherDisplayF() {
     const weather = AppState.weather
-    console.log(weather.weatherTemplate);
+    setHTML('weather', weather.weatherTemplateF)
+  }
+
+  weatherDisplayC() {
+    const weather = AppState.weather
+    setHTML('weather', weather.weatherTemplateC)
   }
 }

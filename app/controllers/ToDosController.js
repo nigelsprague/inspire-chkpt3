@@ -22,7 +22,6 @@ export class ToDosController {
 
   drawToDos() {
     const toDo = AppState.todos
-    console.log('📝', toDo)
     let toDoHTML = ''
     toDo.forEach(todo => toDoHTML += todo.toDoTemplate)
     setHTML('toDoList', toDoHTML)

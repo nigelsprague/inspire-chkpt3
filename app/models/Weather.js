@@ -1,16 +1,18 @@
 export class Weather {
   constructor(data) {
     this.name = data.name
-    this.temp = data.main.temp
+    this.tempF = (data.main.temp - 273.15) * 1.8 + 32
+    this.tempC = data.main.temp - 273.15
     this.weather = data.weather[0].description
   }
 
-  get weatherTemplate() {
-    return `<span>${this.temp}</span>
-      <span>${this.weather}</span>`
+  get weatherTemplateF() {
+    return `<span role="button" onclick="app.WeatherController.weatherDisplayC()">${this.tempF.toFixed(1) + " F"}</span>
+    <span>${this.weather}</span>`
   }
 
-  get tempUnit() {
-
+  get weatherTemplateC() {
+    return `<span role="button" onclick="app.WeatherController.weatherDisplayF()">${this.tempC.toFixed(1) + ' C'}</span >
+  <span>${this.weather}</span>`
   }
 }
